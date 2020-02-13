@@ -1,8 +1,27 @@
-<h1>Sessions#new</h1>
-<h1>Connexion</h1>
+<% if params[:commit] == "Login" %>
+  <div class="container alert alert-danger d-flex justify-content-center alert-dismissible fade show" role="alert">Wrong submits !
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% elsif params[:controller] != "sessions" %>
+  <div class="container alert alert-danger d-flex justify-content-center alert-dismissible fade show" role="alert">Please log in before
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
 
 <div class="container mt-5 form-group">
+ <%= form_tag sessions_path, method: "post" do %>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <%= label_tag 'email' %>
+      <%= text_field_tag 'email', @user.email, class:"form-control" %>
+      <br /> <br />
+      <%= label_tag 'Password' %>
+      <%= text_field_tag 'password', @user.email, class:"form-control", type:"password" %>
+      <br /> <br />
 
-
-  <div style="margin-top: 20px;"><%= link_to "Back home", root_path, :class => "btn btn-info" %></div>
+      <%= submit_tag "Login", class:"btn btn-primary"%>
+    <% end %>
 </div>

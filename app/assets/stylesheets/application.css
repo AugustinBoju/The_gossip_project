@@ -35,23 +35,6 @@
   align-self: center;
  }
 
- #lazyrabbit{
-  bottom: 0px;
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  line-height: 1em;
-  font-size: 2em;
-  margin-bottom:20px;
-  opacity: 0;
- }
-
- #lazyrabbit:hover{
-   opacity: 1;
- }
-
  .banner {
   background-size: cover;
   background-position: center;

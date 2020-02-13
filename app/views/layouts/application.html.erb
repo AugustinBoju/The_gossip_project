@@ -28,9 +28,29 @@
           <li class="nav-item <%= 'active' if current_page?(contact_path) %>">
             <%= link_to "Contact", contact_path, :class => "nav-link" %>
           </li>
-          <li class="nav-item <%= 'active' if current_page?(sessions_new_path) %>">
-            <%= link_to "Log_in", sessions_new_path, :class => "nav-link" %>
-          </li>
+          <% if session[:user_id] == nil%>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign up / Sign in
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "Sign up", new_user_path, :class => "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Sign in", new_session_path, :class => "dropdown-item" %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.first_name %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "See profile", user_path(current_user.id), class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Logout", session_path(session.id), class:"dropdown-item", method: :delete %>
+              </div>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>
@@ -42,3 +62,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
+
