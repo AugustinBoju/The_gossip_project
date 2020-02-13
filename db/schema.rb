@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_10_200932) do
+ActiveRecord::Schema.define(version: 2020_02_10_090910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,16 +20,6 @@ ActiveRecord::Schema.define(version: 2020_02_10_200932) do
     t.string "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "comment_of_comments", force: :cascade do |t|
-    t.text "content"
-    t.bigint "comment_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_comment_of_comments_on_comment_id"
-    t.index ["user_id"], name: "index_comment_of_comments_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -51,15 +41,6 @@ ActiveRecord::Schema.define(version: 2020_02_10_200932) do
     t.index ["user_id"], name: "index_gossips_on_user_id"
   end
 
-  create_table "join_gossip_tags", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "gossip_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["gossip_id"], name: "index_join_gossip_tags_on_gossip_id"
-    t.index ["tag_id"], name: "index_join_gossip_tags_on_tag_id"
-  end
-
   create_table "join_pm_receivers", force: :cascade do |t|
     t.bigint "private_message_id"
     t.bigint "recipient_id"
@@ -67,15 +48,6 @@ ActiveRecord::Schema.define(version: 2020_02_10_200932) do
     t.datetime "updated_at", null: false
     t.index ["private_message_id"], name: "index_join_pm_receivers_on_private_message_id"
     t.index ["recipient_id"], name: "index_join_pm_receivers_on_recipient_id"
-  end
-
-  create_table "join_private_message_receivers", force: :cascade do |t|
-    t.bigint "private_message_id"
-    t.bigint "recipient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["private_message_id"], name: "index_join_private_message_receivers_on_private_message_id"
-    t.index ["recipient_id"], name: "index_join_private_message_receivers_on_recipient_id"
   end
 
   create_table "join_table_tag_gossips", force: :cascade do |t|
@@ -111,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_200932) do
     t.string "last_name"
     t.text "description"
     t.string "email"
+    t.string "password_digest"
     t.integer "age"
     t.bigint "city_id"
     t.datetime "created_at", null: false

@@ -21,28 +21,34 @@ City.create(
   zip_code: Faker::Address.zip_code
 )
 end
+puts "Cities created"
 
 User.create(
-  first_name: "Anon", 
-  last_name: "Ymous", 
+  first_name: "Anon",
+  last_name: "Ymous",
   description: "You can't see me but i'm not John Cena",
   email: "anonymous@email.com",
+  password: "123456",
+  password_confirmation: "123456",
   age:rand(13..100),
   city_id: City.all.sample.id
 )
-
+puts "Anonymous created"
 
 15.times do
+@password = Faker::Code.imei
 User.create(
-  first_name: Faker::Name.first_name, 
-  last_name: Faker::Name.last_name, 
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
   description: Faker::Movie.quote,
   email: Faker::Internet.email,
+  password: @password,
+  password_confirmation: @password,
   age:rand(13..100),
   city_id: City.all.sample.id
 )
 end
-
+puts "Users created"
 
 25.times do
 Gossip.create(
@@ -51,6 +57,7 @@ Gossip.create(
   user_id: User.all.sample.id
 )
 end
+puts "Gossips created"
 
 40.times do
   Comment.create(
@@ -59,10 +66,12 @@ end
     gossip_id: Gossip.all.sample.id
   )
 end
+puts "Comments created"
 
 10.times do
 Tag.create(title: "#" + Faker::Verb.base)
 end
+puts "Tags created"
 
 30.times do
 JoinTableTagGossip.create(
@@ -70,7 +79,7 @@ JoinTableTagGossip.create(
   gossip_id: Gossip.all.sample.id
 )
 end
-
+puts "Gossip's tag created"
 
 20.times do
   PrivateMessage.create(sender: User.all.sample, content: Faker::Quote.unique.most_interesting_man_in_the_world)
