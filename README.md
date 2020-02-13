@@ -14,3 +14,6 @@ run 'rails s'
 
 go on:
 http://localhost:3000/
+
+Bug potentiels depuis que je viens de push sa M*** la P*** ...!
+Bonne visite :)
