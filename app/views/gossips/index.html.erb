@@ -1,16 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.astorapartments.com.au/wp-content/uploads/2019/05/comic-books-1000x675.jpg);">
   <div class="container">
-    <%if session[:user_id] != nil%>
-      <h1>Welcome <%= current_user.first_name %></h1>
-    <%else %>
-      <%if params[:first_name] == nil%>
-        <h1>Welcome dear visitor</h1>
-      <%elsif params[:action] == "create" && params[:commit] == "Create User"%>
-        <h1>Welcome to the gossips <%= params[:first_name] %></h1>
-      <%else %>
-        <h1>Welcome to the gossips <%= params[:first_name] %></h1>
-    <% end %>
-    <% end %>
+    <h1>Welcome to the Gossips</h1>
     <p>Change your life and trash talk about others.</p>
     <div class="container d-flex justify-content-center" style="margin-bottom: 20px; margin-top: 20px;"><%= link_to "New gossip", new_gossip_path, :class => "btn btn-info" %></div>
   </div>

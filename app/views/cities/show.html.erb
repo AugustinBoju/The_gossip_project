@@ -11,9 +11,7 @@
             <p class="card-text"><%= gossip.title %></p>
           </div>
           <div class="card-footer">
-            <%= link_to "See more", gossip_path(gossip.id), class:"btn btn-outline-info" %>
-            <%= link_to "Edit", edit_gossip_path(gossip.id), class:"btn btn-outline-success" %>
-            <%= link_to "Delete", gossip_path(gossip.id), class:"btn btn-outline-danger", data:{confirm:"Sure you wanna delete ?", method:"DELETE"} %>
+            <%= link_to "See more", gossip_path(gossip.id), class:"btn btn-info" %>
           </div>
         </div>
       <% end %>

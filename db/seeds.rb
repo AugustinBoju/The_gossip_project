@@ -13,7 +13,6 @@ Tag.destroy_all
 JoinTableTagGossip.destroy_all
 PrivateMessage.destroy_all
 Comment.destroy_all
-Like.destroy_all
 
 10.times do
 City.create(
